@@ -13,6 +13,7 @@ use App\LabResult;
 use App\Pham;
 use App\SurgeryHistory;
 use App\Vital;
+use App\Appointment;
 
 class PatientController extends Controller
 {
@@ -129,6 +130,7 @@ class PatientController extends Controller
         Pham::where('patient_id',$id)->delete();
         SurgeryHistory::where('patient_id',$id)->delete();
         Vital::where('patient_id',$id)->delete();
+        Appointment::where('patient_id',$id)->delete();
       
         $patient->delete();     
             

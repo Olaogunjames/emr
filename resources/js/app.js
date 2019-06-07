@@ -62,6 +62,7 @@ const routes = [
     { name: 'staff', path: '/staff', component: require('./components/staff.vue').default },
     { name: 'all-staffs', path: '/all-staffs', component: require('./components/all-staff.vue').default },
     { name: 'profile', path: '/profile', component: require('./components/profile.vue').default },
+    { name: 'appointment', path: '/appointment', component: require('./components/appointment.vue').default },
   ]
 
   const router = new VueRouter({

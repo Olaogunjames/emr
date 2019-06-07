@@ -33,4 +33,8 @@ class addPatient extends Model
     public function payment(){
         return $this->hasMany('App\Payment');
     }
+
+    public function appointment(){
+        return $this->hasMany('App\Appointment');
+    }
 }
