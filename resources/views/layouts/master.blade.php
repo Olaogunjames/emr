@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/fSelect.css">
-  {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> --}}
+  {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> --}}  
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -57,32 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          {{-- <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li> --}}
-
+  
           <li class="nav-item">
             <router-link to="/patients" class="nav-link">
               <i class="nav-icon fas fa-procedures"></i>
@@ -92,8 +67,158 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
 
+          {{-- Condition to show for admin --}} 
+          @if (Auth::user()->role == "admin")                                
+          <li class="nav-item">
+            <router-link to="/add-biodata" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                Add Patient Biodata             
+              </p>
+            </router-link>
+          </li>         
+          <li class="nav-item">
+            <router-link to="/vitals" class="nav-link">
+              <i class="nav-icon fas fa-heartbeat"></i>
+              <p>
+                Patient Vitals             
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add-vital" class="nav-link">
+              <i class="nav-icon fas fa-heartbeat"></i>
+              <p>
+                Add Patient Vitals             
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/hospital" class="nav-link">
+              <i class="nav-icon fas fa-hospital-symbol"></i>
+              <p>
+                Hospital History            
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add-hospital" class="nav-link">
+              <i class="nav-icon fas fa-hospital-symbol"></i>
+              <p>
+                Add Hospital History            
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add-surgery" class="nav-link">
+              <i class="nav-icon fas fa-user-md"></i>
+              <p>
+                Add Surgery History            
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/surgery" class="nav-link">
+              <i class="nav-icon fas fa-user-md"></i>
+              <p>
+                Surgery History            
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/give-injection" class="nav-link">
+              <i class="nav-icon fas fa-syringe"></i>
+              <p>
+                Give Injection
+              </p>
+            </router-link>
+          </li>         
+          <li class="nav-item">
+            <router-link to="/complain" class="nav-link">
+              <i class="nav-icon fas fa-diagnoses"></i>
+              <p>
+                Fill Patient Diagnosis             
+              </p>
+            </router-link>
+          </li>        
+          <li class="nav-item">
+            <router-link to="/diagnosed" class="nav-link">
+              <i class="nav-icon fas fa-vials"></i>
+              <p>
+                Diagnosed Patient
+              </p>
+            </router-link>
+          </li>                           
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Schedule Appointment
+              </p>
+            </a>
+          </li>     
+           <li class="nav-item">
+            <router-link to="/lab-test" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+                Refered Details from Doctor
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/labresult" class="nav-link">
+              <i class="nav-icon fas fa-vial"></i>
+              <p>
+               Lab Result
+              </p>
+            </router-link>
+          </li>                        
+          <li class="nav-item">
+            <router-link to="/pham-test" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              <p>
+                  Get Refered Details             
+              </p>
+            </router-link>
+          </li>         
+          <li class="nav-item">
+            <router-link to="/medication" class="nav-link">
+              <i class="nav-icon fas fa-comment-medical"></i>
+              <p>
+                  Patients on medication
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/billing" class="nav-link">
+              <i class="nav-icon fas fa-money-bill-wave"></i>
+              <p>
+                Billing
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/staff" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Add Staff
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/all-staffs" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                All Staffs
+              </p>
+            </router-link>
+          </li>
+          @endif
+          {{-- End Condition to show for admin --}}
+
+
           {{-- Condition to show for receptionist --}} 
-          @if (Auth::user()->role == "recept" || Auth::user()->role == "admin")                                
+          @if (Auth::user()->role == "recept" )                                
           <li class="nav-item">
             <router-link to="/add-biodata" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
@@ -106,7 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- End Condition to show for receptionist --}}
 
           {{-- Condition to show for nurse --}}
-          @if (Auth::user()->role == "nurse" || Auth::user()->role == "admin")          
+          @if (Auth::user()->role == "nurse" )          
           <li class="nav-item">
             <router-link to="/vitals" class="nav-link">
               <i class="nav-icon fas fa-heartbeat"></i>
@@ -175,7 +300,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- End Condition to show for nurse --}}
 
           {{-- Condition to show for doctor --}}
-          @if (Auth::user()->role == "doc"  || Auth::user()->role == "admin")          
+          @if (Auth::user()->role == "doc"  )          
           <li class="nav-item">
             <router-link to="/complain" class="nav-link">
               <i class="nav-icon fas fa-diagnoses"></i>
@@ -212,7 +337,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- End Condition to show for doctor --}}
 
            {{-- Condition to show for lab --}}  
-           @if (Auth::user()->role == "lab" || Auth::user()->role == "admin")        
+           @if (Auth::user()->role == "lab" )        
            <li class="nav-item">
             <router-link to="/lab-test" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
@@ -241,7 +366,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- End Condition to show for lab --}}
 
           {{-- Condition to show for pharmacy --}}
-          @if (Auth::user()->role == "pharm" || Auth::user()->role == "admin")          
+          @if (Auth::user()->role == "pharm" )          
           <li class="nav-item">
             <router-link to="/pham-test" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
@@ -271,12 +396,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
                Profile Details             
               </p>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">            
             <a class="nav-link" href="{{ route('logout') }}"

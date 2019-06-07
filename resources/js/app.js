@@ -15,6 +15,7 @@ import { Form, HasError, AlertError } from 'vform';
 import moment from 'moment';
 import swal from 'sweetalert2'
 window.swal = swal;
+window.NProgress = NProgress;
 window.Fire = new Vue();
 
  
@@ -58,6 +59,9 @@ const routes = [
     { name: 'medication', path: '/medication', component: require('./components/medication.vue').default },
     { name: 'give-injection', path: '/give-injection', component: require('./components/give-injection.vue').default },
     { name: 'billing', path: '/billing', component: require('./components/billing.vue').default },
+    { name: 'staff', path: '/staff', component: require('./components/staff.vue').default },
+    { name: 'all-staffs', path: '/all-staffs', component: require('./components/all-staff.vue').default },
+    { name: 'profile', path: '/profile', component: require('./components/profile.vue').default },
   ]
 
   const router = new VueRouter({
@@ -69,12 +73,19 @@ const routes = [
   router.beforeResolve((to, from, next) => {
     if (to.name) {
         NProgress.start()
+        NProgress.set(0.4); // To set a progress percentage, call .set(n), where n is a number between 0..1
+        NProgress.inc(); // To increment the progress bar, just use .inc(). This increments it with a random amount. This will never get to 100%: use it for every image load (or similar).If you want to increment by a specific value, you can pass that as a parameter
+        NProgress.configure({ ease: 'ease', speed: 500 }); // Adjust animation settings using easing (a CSS easing string) and speed (in ms). (default: ease and 200)
+        NProgress.configure({trickleSpeed: 800 }); //Adjust how often to trickle/increment, in ms.
     }
     next()
   })
   
+  
   router.afterEach((to, from) => {
-    NProgress.done()
+    setTimeout(function(){
+      NProgress.done()
+     }, 3000);    
   })
 
 

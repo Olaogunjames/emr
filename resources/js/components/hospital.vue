@@ -70,9 +70,9 @@
                     </button>
                     </div>
                     <div class="col-sm-6">
-                    <a href="#" class="text-danger">
+                     <button  @click="deleteHospital(hospital.id)" class="text-danger">
                       <i class="fa fa-trash"></i>
-                    </a>
+                    </button>
                     </div>
                     </div>
                 </td>                            
@@ -210,6 +210,44 @@
             editModal(hospital){
               $('#edithospital').modal('show');
               this.form.fill(hospital);              
+            },
+            deleteHospital(id){
+                swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            //delete qury below
+                            if (result.value) {
+                                swal.fire({
+                                position: 'center',
+                                type: 'info',
+                                title: 'Processing Delete',
+                                showConfirmButton: false,
+                                timer: 1000
+                                })
+                        this.form.delete('api/hospital/'+id).then(
+                            ()=>{
+                                swal.fire(
+                                'Deleted!',
+                                'Deleted Successfully.',
+                                'success'
+                                )
+                                Fire.$emit('afterAction');
+                            }).catch(
+                                ()=>{
+                                swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                })  
+                                }); 
+                            }                       
+                        })
             },
             updateHospital(){
                 $('.updatehospital').html('<i class="fa fa-spin fa-spinner"></i>');

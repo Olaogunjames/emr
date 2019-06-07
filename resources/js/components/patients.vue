@@ -10,6 +10,11 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                <center>
+                <!-- <div class="test">
+                    <img src="images/Interwind-1s-100px.svg" alt="">
+                </div> -->
+                </center>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -22,8 +27,8 @@
                   <th>All</th>
                   <th>Action</th>
                 </tr>
-                </thead>
-                <tbody>              
+                </thead>                
+                <tbody>                                                                                         
                 <tr v-for="patient in patients" :key="patient.id">
                   <td>{{patient.unique_id}}</td>
                   <td>{{patient.title}}  {{patient.full_name}}</td>
@@ -77,13 +82,13 @@
                     </button>
                     </div>
                     <div class="col-sm-6">
-                    <a href="#" class="text-danger">
+                    <button  @click="deletePatient(patient.id)" class="text-danger">
                       <i class="fa fa-trash"></i>
-                    </a>
+                    </button>
                     </div>
                     </div>
                 </td>                            
-                </tr>                
+                </tr>                  
                  <!--Biodata Modal -->
                       <div class="modal fade" id="editpatient" tabindex="-1" role="dialog" aria-labelledby="biodataTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -253,12 +258,50 @@
             }
         },
         methods:{          
-            loadPatients(){
-                 axios.get('api/patient').then(({data}) => (this.patients = data));
+            loadPatients(){                            
+                 axios.get('api/patient').then(({data}) => (this.patients = data));                 
             },
             editModal(patient){
               $('#editpatient').modal('show');
               this.form.fill(patient);              
+            },
+            deletePatient(id){
+                swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            //delete qury below
+                            if (result.value) {
+                                swal.fire({
+                                position: 'center',
+                                type: 'info',
+                                title: 'Processing Delete',
+                                showConfirmButton: false,
+                                timer: 1000
+                                })
+                        this.form.delete('api/patient/'+id).then(
+                            ()=>{
+                                swal.fire(
+                                'Deleted!',
+                                'Deleted Successfully.',
+                                'success'
+                                )
+                                Fire.$emit('afterAction');
+                            }).catch(
+                                ()=>{
+                                swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                })  
+                                }); 
+                            }                       
+                        })
             },
             updatePatient(){
                 $('.updatepatient').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -268,21 +311,21 @@
                         $('#editpatient').modal('hide');
                         toast.fire({
                         type: 'success',
-                        title: 'Patient Biodata Update Successfully'
+                        title: 'Patient Biodata Updated Successfully'
                         })   
-                        $('.updatepatient').html('Add Patient'); 
+                        $('.updatepatient').html('Update Patient'); 
                     }).catch(
                         ()=>{
                         toast.fire({
                         type: 'error',
                         title: 'Data not correctly inputed'
                         })   
-                        $('.updatepatient').html('Add Patient');
+                        $('.updatepatient').html('Update Patient');
                         });                                      
             }
         },        
         mounted() {
-            console.log('Component mounted.')            
+            console.log('Component mounted.')                        
             this.loadPatients(); 
             Fire.$on('afterAction', () => {this.loadPatients()})                                   
         }

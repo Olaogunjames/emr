@@ -18,7 +18,7 @@
                   <th>Dianoses Details</th>                
                   <th>Date of  Medication</th>
                   <th>Medication Details</th>
-                  <th v-if="user.role == 'nurse'">Injection</th>
+                  <th v-if="user.role == 'nurse' || user.role == 'admin'">Injection</th>
                   <th v-if="user.role == 'pham'">Action</th>
                 </tr>
                 </thead>
@@ -29,7 +29,7 @@
                   <td>{{medication.diagnose.diagnosis}}</td>
                   <td>{{medication.created_at | humanDate}}</td>
                   <td>{{medication.type}} <br> {{medication.unit}} unit <br> {{medication.comment}}</td> 
-                  <td v-if="user.role == 'nurse'">
+                  <td v-if="user.role == 'nurse' || user.role == 'admin'">
                       <p v-if="medication.injection == 1"> Already Injection</p>
                       <button v-else type="button" class="btn btn-primary" @click="giveinjection(medication)">
                       Give Injection
@@ -134,7 +134,7 @@
                   <th>Dianoses Details</th>                
                   <th>Date of  Medication</th>
                   <th>Medication Details</th>
-                  <th v-if="user.role == 'nurse'">Injection</th>
+                  <th v-if="user.role == 'nurse' || user.role == 'admin'">Injection</th>
                 <th v-if="user.role == 'pham'">Action</th>
                 </tr>
                 </tfoot>

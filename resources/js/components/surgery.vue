@@ -1,8 +1,8 @@
 <template>
     <div class="container">       
-        <!-- <div>
-            <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link>
-        </div> <br><br>  -->
+        <div>
+            <router-link to="/add-surgery"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Surgery History</router-link>
+        </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
@@ -36,9 +36,9 @@
                     </button>
                     </div>
                     <div class="col-sm-6">
-                    <a href="#" class="text-danger">
+                    <button  @click="deleteSurgery(surgery.id)" class="text-danger">
                       <i class="fa fa-trash"></i>
-                    </a>
+                    </button>
                     </div>
                     </div>
                 </td>                            
@@ -128,6 +128,44 @@
               $('#editsurgery').modal('show');
               this.form.fill(surgery);              
             },
+             deleteSurgery(id){
+                swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            //delete qury below
+                            if (result.value) {
+                                swal.fire({
+                                position: 'center',
+                                type: 'info',
+                                title: 'Processing Delete',
+                                showConfirmButton: false,
+                                timer: 1000
+                                })
+                        this.form.delete('api/surgery/'+id).then(
+                            ()=>{
+                                swal.fire(
+                                'Deleted!',
+                                'Deleted Successfully.',
+                                'success'
+                                )
+                                Fire.$emit('afterAction');
+                            }).catch(
+                                ()=>{
+                                swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                })  
+                                }); 
+                            }                       
+                        })
+            },
             updateSurgery(){
                 $('.updatesurgery').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.put('api/surgery/'+this.form.id).then(
@@ -152,7 +190,7 @@
         mounted() {
             console.log('Component mounted.')            
             this.LoadSurgeries(); 
-            Fire.$on('afterAction', () => {this.LoadSurgeriess()})                                   
+            Fire.$on('afterAction', () => {this.LoadSurgeries()})                                   
         }
         
     }

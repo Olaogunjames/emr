@@ -18,18 +18,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResources([
-    'patient' => 'API\PatientController',
-    'vital' => 'API\VitalController',
-    'hospital' => 'API\HospitalController',
-    'surgery' => 'API\SurgeryController',
-    'diagnose' => 'API\DiagnoseController',
-    'uploadtest' => 'API\LabResultController',
-    'uploadpham' => 'API\phamController',
-    'payment' => 'API\PaymentController',
-]);
+    Route::apiResources([
+        'patient' => 'API\PatientController',
+        'vital' => 'API\VitalController',
+        'hospital' => 'API\HospitalController',
+        'surgery' => 'API\SurgeryController',
+        'diagnose' => 'API\DiagnoseController',
+        'uploadtest' => 'API\LabResultController',
+        'uploadpham' => 'API\phamController',
+        'payment' => 'API\PaymentController',
+        'staff' => 'API\StaffController',
+    ]);
+    
+    Route::get('labtest', 'API\DiagnoseController@labtest');
+    Route::get('phamtest', 'API\DiagnoseController@phamtest');
+    Route::get('give-injection', 'API\phamController@giveInjection');
+    Route::post('paymentsave', 'API\PaymentController@paymentsave');
+    Route::get('profile', 'API\StaffController@profile');
 
-Route::get('labtest', 'API\DiagnoseController@labtest');
-Route::get('phamtest', 'API\DiagnoseController@phamtest');
-Route::get('give-injection', 'API\phamController@giveInjection');
-Route::post('paymentsave', 'API\PaymentController@paymentsave');
+
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\HospitalHistory;
+use App\Diagnose;
 
 class HospitalController extends Controller
 {
@@ -112,5 +113,10 @@ class HospitalController extends Controller
     public function destroy($id)
     {
         //
+        $hospital = HospitalHistory::findOrFail($id);
+
+        Diagnose::where('hospital_id',$id)->delete();      
+      
+        $hospital->delete(); 
     }
 }

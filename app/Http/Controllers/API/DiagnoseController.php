@@ -91,6 +91,11 @@ class DiagnoseController extends Controller
     public function destroy($id)
     {
         //
+        $diagnose = Diagnose::findOrFail($id);
+
+        LabResult::where('patient_id',$id)->delete();        
+      
+        $diagnose->delete();
     }
 
     

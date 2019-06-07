@@ -106,5 +106,8 @@ class VitalController extends Controller
     public function destroy($id)
     {
         //
+        $vital = Vital::findOrFail($id);
+      
+        $vital->delete();   
     }
 }

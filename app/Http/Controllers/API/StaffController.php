@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\SurgeryHistory;
-use App\Diagnose;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use Auth;
 
-class SurgeryController extends Controller
+class StaffController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth:api');
     }
-    
+
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +26,7 @@ class SurgeryController extends Controller
     public function index()
     {
         //
-        return SurgeryHistory::with('patient')->get();
+        return User::all();
     }
 
     /**
@@ -36,19 +39,22 @@ class SurgeryController extends Controller
     {
         //
         $this->validate($request, [
-            'patient_id' => 'required',
-            'hospital_id' => 'required | unique:diagnoses',
-            'date_of_operation' => 'required',
-            'surgeon' => 'required',           
-        ]);        
-        $surgery = new SurgeryHistory;
-        $surgery->patient_id = $request->patient_id;       
-        $surgery->operations = $request->operations;
-        $surgery->date_of_operation = $request->date_of_operation;
-        $surgery->surgeon = $request->surgeon;
-        $surgery->modal_id = strtolower(str_random(8));
+            'name' => 'required | string | max:191',
+            'email' => 'required | string | email | max:191 | unique:users',
+            'password' => 'required | string | min:8',
+            'role' => 'required',
+            'title' => 'required',           
+        ]);
 
-        $surgery->save();
+        $staff = new User;
+        $staff->name = $request->name;       
+        $staff->title = $request->title;
+        $staff->role = $request->role;
+        $staff->email = $request->email;
+        $staff->password = Hash::make($request->password);
+
+        $staff->save();
+                   
     }
 
     /**
@@ -72,15 +78,16 @@ class SurgeryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $surgery = SurgeryHistory::findOrFail($id);
+        $staff = User::findOrFail($id);
 
         $this->validate($request, [
-            'patient_id' => 'required',
-            'operations' => 'required',
-            'date_of_operation' => 'required',
-            'surgeon' => 'required',           
-        ]);        
-        $surgery->update($request->all());
+            'name' => 'required | string | max:191',
+            'email' => 'required | string | email | max:191 | unique:add_patients,email,'.$staff->id,
+            'role' => 'required',
+            'title' => 'required', 
+        ]);
+        
+        $staff->update($request->all());
     }
 
     /**
@@ -92,8 +99,14 @@ class SurgeryController extends Controller
     public function destroy($id)
     {
         //
-        $surgery = SurgeryHistory::findOrFail($id);
+        $staff = User::findOrFail($id);
       
-        $surgery->delete();  
+        $staff->delete();
+    }
+
+    public function profile()
+    {
+        //
+        return \Auth::user();
     }
 }

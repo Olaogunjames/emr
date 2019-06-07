@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            <router-link to="/add-biodata"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add New</router-link>
+            <router-link to="/add-vital"  type="button" class="btn btn-rounded btn-info"  style="color:#fff;">Add Vital</router-link>
         </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
@@ -65,9 +65,9 @@
                     </button>
                     </div>
                     <div class="col-sm-6">
-                    <a href="#" class="text-danger">
+                     <button  @click="deleteVital(vital.id)" class="text-danger">
                       <i class="fa fa-trash"></i>
-                    </a>
+                    </button>
                     </div>
                     </div>
                 </td>                            
@@ -83,16 +83,7 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                             <form @submit.prevent="updateVital" id="add-biodata">
-                                 <!-- <input v-model="form.patient_id" type="hidden" name="patient_id" 
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }">
-                           <div class="form-group">
-                        <label>Select Patient</label>                
-                        <select v-model="form.patient_id" class="form-control" :class="{ 'is-invalid': form.errors.has('patient_id') }" name="patient_id">
-                        <option v-for="vital in vitals" :key="vital.id" :value="vital.patient.unique_id">{{vital.patient.full_name}}</option>
-                        </select>  
-                        <has-error :form="form" field="patient_id"></has-error>
-                        </div>      -->                 
+                             <form @submit.prevent="updateVital" id="add-biodata">                                               
                         <div class="form-group"> 
                         <label>Temperature</label>                       
                         <input v-model="form.temperature" type="number" name="temperature" placeholder="Enter Temperature"
@@ -209,6 +200,44 @@
             editModal(vital){
               $('#editvital').modal('show');
               this.form.fill(vital);              
+            },
+            deleteVital(id){
+                swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            //delete qury below
+                            if (result.value) {
+                                swal.fire({
+                                position: 'center',
+                                type: 'info',
+                                title: 'Processing Delete',
+                                showConfirmButton: false,
+                                timer: 1000
+                                })
+                        this.form.delete('api/vital/'+id).then(
+                            ()=>{
+                                swal.fire(
+                                'Deleted!',
+                                'Deleted Successfully.',
+                                'success'
+                                )
+                                Fire.$emit('afterAction');
+                            }).catch(
+                                ()=>{
+                                swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                })  
+                                }); 
+                            }                       
+                        })
             },
             updateVital(){
                 $('.updatevital').html('<i class="fa fa-spin fa-spinner"></i>');
