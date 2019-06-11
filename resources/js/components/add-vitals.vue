@@ -14,27 +14,27 @@
                         <has-error :form="form" field="patient_id"></has-error>
                         </div>                       
                         <div class="form-group">                        
-                        <input v-model="form.temperature" type="number" name="temperature" placeholder="Enter Temperature"
+                        <input v-model="form.temperature" type="text" name="temperature" placeholder="Enter Temperature"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('temperature') }">
                         <has-error :form="form" field="temperature"></has-error>
                         </div>                       
                         <div class="form-group">                        
-                        <input v-model="form.blood_pressure" type="number" name="blood_pressure" placeholder="Enter Blood Pressure"
+                        <input v-model="form.blood_pressure" type="text" name="blood_pressure" placeholder="Enter Blood Pressure"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('blood_pressure') }">
                         <has-error :form="form" field="blood_pressure"></has-error>
                         </div>
                         <div class="form-group">                        
-                        <input v-model="form.height" type="number" name="height" placeholder="Enter Height"
+                        <input v-model="form.height" type="text" name="height" placeholder="Enter Height"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('height') }">
                         <has-error :form="form" field="height"></has-error>
                         </div>
                         <div class="form-group">                        
-                        <input v-model="form.weight" type="number" name="weight" placeholder="Enter Weight"
+                        <input v-model="form.weight" type="text" name="weight" placeholder="Enter Weight"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('weight') }">
                         <has-error :form="form" field="weight"></has-error>
                         </div>
                         <div class="form-group">                        
-                        <input v-model="form.pulse" type="number" name="pulse" placeholder="Enter Pulse"
+                        <input v-model="form.pulse" type="text" name="pulse" placeholder="Enter Pulse"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('pulse') }">
                         <has-error :form="form" field="pulse"></has-error>
                         </div>

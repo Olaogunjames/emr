@@ -56,10 +56,11 @@
                                  <div class="form-group">
                                 <label>Select Type of Test</label>                
                                 <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
-                                <option value="hfghg">Dr</option>
-                                <option value="Miuyjyss">Miss</option>
-                                <option value="jhjhoijkjok">Mrs</option>
-                                <option value="jgjgujuj">Mr</option>
+                                 <option value="Type Test 1">Type Test 1</option>
+                                <option value="Type Test 2">Type Test 2</option>
+                                <option value="Type Test 3">Type Test 3</option>
+                                <option value="Type Test 4">Type Test 4</option>
+                                <option value="Type Test 5">Type Test 5</option>
                                 </select>  
                                 <has-error :form="form" field="type"></has-error>
                                 </div>

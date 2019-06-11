@@ -53,16 +53,19 @@
                         <has-error :form="form" field="title"></has-error>
                         </div>
                         <div class="form-group">
+                          <label>Edit Full Name</label>  
                         <input v-model="form.name" type="text" name="name" placeholder="Enter Full Name"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                         <has-error :form="form" field="name"></has-error>
                         </div>
-                        <div class="form-group">                        
+                        <div class="form-group"> 
+                          <label>Edit Email</label>                         
                         <input v-model="form.email" type="email" name="email" placeholder="Enter Email"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                         <has-error :form="form" field="email"></has-error>
                         </div>
-                        <div class="form-group">                        
+                        <div class="form-group">       
+                          <label>Edit Role</label>                 
                       <select  v-model="form.role" class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" name="role">
                             <option value="nul" style="font-weight:700;">Edit Role</option>
                             <option value="recept">Reception</option>

@@ -125,10 +125,12 @@
                           <div class="modal-body">
                              <form @submit.prevent="updateDiagnoses" id="edit-diagnoses">                         
                                 <div class="form-group"> 
+                                  <label for="Diadnoses"> Edit Diagnosis</label>
                                 <textarea v-model="form.diagnosis"  placeholder="Diagnosis" name="diagnosis" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('diagnosis') }"></textarea>                       
                                 <has-error :form="form" field="diagnosis"></has-error>                       
                                 </div>                                                 
-                                <div class="form-group">                        
+                                <div class="form-group"> 
+                                  <label for="comment">Edit Comment</label>                       
                                 <input v-model="form.comment" type="text" name="comment" placeholder="Comment"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }">
                                 <has-error :form="form" field="comment"></has-error>

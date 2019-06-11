@@ -94,19 +94,21 @@
                                 <div class="form-group">
                                 <label>Select Type of Medicine</label>                
                                 <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
-                                <option value="hfghg">Dr</option>
-                                <option value="Miuyjyss">Miss</option>
-                                <option value="jhjhoijkjok">Mrs</option>
-                                <option value="jgjgujuj">Mr</option>
+                               <option value="Tablet">Tablet</option>
+                                <option value="Capsule">Capsule</option>
+                                <option value="Multivitamins">Multivitamins</option>
+                                <option value="Syrup">Syrup</option>
                                 </select>  
                                 <has-error :form="form" field="type"></has-error>
                                 </div>   
                                 <div class="form-group"> 
+                                  <label>Edit Unit</label> 
                                 <input v-model="form.unit" type="number" name="unit" placeholder="Enter Unit"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('unit') }">
                                 <has-error :form="form" field="unit"></has-error>
                                 </div>                           
                                 <div class="form-group"> 
+                                  <label>Edit Comment</label> 
                                 <textarea v-model="form.comment"  placeholder="Comment" name="comment" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('comment') }"></textarea>                       
                                 <has-error :form="form" field="comment"></has-error>                       
                                 </div> 

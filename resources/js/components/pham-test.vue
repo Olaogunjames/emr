@@ -46,20 +46,16 @@
                                 <input v-model="form.patient_id" 
                                 :value="diagnose.patient.id" 
                                 type="radio" 
-                                name="patient_id" /> Confirm First
-
-                                <input v-model="form.diagnose_id" 
-                                :value="diagnose.id" 
-                                type="radio" 
-                                name="diagnose_id" /> Confirm First
+                                name="patient_id" /> Confirm Action First
+          <br>                                
                                                              
                                  <div class="form-group">
                                 <label>Select Type of Medicine</label>                
                                 <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
-                                <option value="hfghg">Dr</option>
-                                <option value="Miuyjyss">Miss</option>
-                                <option value="jhjhoijkjok">Mrs</option>
-                                <option value="jgjgujuj">Mr</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Capsule">Capsule</option>
+                                <option value="Multivitamins">Multivitamins</option>
+                                <option value="Syrup">Syrup</option>
                                 </select>  
                                 <has-error :form="form" field="type"></has-error>
                                 </div>   
@@ -75,7 +71,13 @@
                                  <input v-model="form.nurse" 
                                 :value="1" 
                                 type="checkbox" 
-                                name="nurse" /> Refer Patient for injection                                          
+                                name="nurse" /> Refer Patient for injection
+                                
+                                <input v-model="form.diagnose_id" 
+                                :value="diagnose.id" 
+                                type="radio" 
+                                name="diagnose_id" /> Confirm Action Again
+
                                 <center>
                                 <button type="submit" class="labtestresult btn-block btn btn-info" style="color:#fff;">Give Prescription</button>
                                 </center>

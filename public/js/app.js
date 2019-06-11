@@ -5130,6 +5130,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -72671,6 +72673,8 @@ var render = function() {
                                   "div",
                                   { staticClass: "form-group" },
                                   [
+                                    _c("label", [_vm._v("Edit Full Name")]),
+                                    _vm._v(" "),
                                     _c("input", {
                                       directives: [
                                         {
@@ -72717,6 +72721,8 @@ var render = function() {
                                   "div",
                                   { staticClass: "form-group" },
                                   [
+                                    _c("label", [_vm._v("Edit Email")]),
+                                    _vm._v(" "),
                                     _c("input", {
                                       directives: [
                                         {

@@ -105,7 +105,6 @@
                             <label>Select Title</label>                
                             <select v-model="form.title" class="form-control" :class="{ 'is-invalid': form.errors.has('title') }" name="title">
                             <option value="nul" style="font-weight:700;">Select Title</option>
-                            <option value="Dr">Dr</option>
                             <option value="Miss">Miss</option>
                             <option value="Mrs">Mrs</option>
                             <option value="Mr">Mr</option>
@@ -113,27 +112,31 @@
                             <has-error :form="form" field="title"></has-error>
                             </div>
                             <div class="form-group">
+                                <label>Edit Full Name</label>
                             <input v-model="form.full_name" type="text" name="full_name" placeholder="Enter Full Name"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('full_name') }">
                             <has-error :form="form" field="full_name"></has-error>
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group"> 
+                                <label>Edit Email</label>                       
                             <input v-model="form.email" type="email" name="email" placeholder="Enter Email"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                             <has-error :form="form" field="email"></has-error>
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group">  
+                                <label>Edit Phone Number</label>                                             
                             <input v-model="form.phone_number" type="number" name="phone_number" placeholder="Enter Mobile Number"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('phone_number') }">
                             <has-error :form="form" field="phone_number"></has-error>
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group">  
+                                <label>Edit Occupation</label>                                             
                             <input v-model="form.occupation" type="text" name="occupation" placeholder="Enter Occupation"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('occupation') }">
                             <has-error :form="form" field="occupation"></has-error>
                             </div>
                             <div class="form-group">
-                            <label>Select Gender</label>                
+                            <label>Edit Gender</label>                
                             <select v-model="form.sex" class="form-control" :class="{ 'is-invalid': form.errors.has('sex') }" name="sex">
                             <option value="nul" style="font-weight:700;">Select Gender</option>
                             <option value="Male">Male</option>
@@ -142,27 +145,29 @@
                             <has-error :form="form" field="sex"></has-error>
                             </div>
                             <div class="form-group">
-                            <label>Date of Birth</label>                        
+                            <label>Edit Date of Birth</label>                        
                             <input v-model="form.dob" type="date" name="dob" placeholder="Enter Date of Birth"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('dob') }">
                             <has-error :form="form" field="dob"></has-error>
                             </div>
                             <div class="form-group">
-                            <label>Select Relegion</label>                
+                            <label>Edit Relegion</label>                
                             <select v-model="form.religion" class="form-control" :class="{ 'is-invalid': form.errors.has('religion') }" name="religion">
                             <option value="nul" style="font-weight:700;">Select Religion</option>
                             <option value="Christainity">Christainity</option>
                             <option value="Islam">Islam</option>     
+                            <option value="Others">Others</option> 
                             </select>  
                             <has-error :form="form" field="religion"></has-error>
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group"> 
+                                <label>Edit Nationality</label>                         
                             <input v-model="form.nationality" type="text" name="nationality" placeholder="Nationality"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('nationality') }">
                             <has-error :form="form" field="nationality"></has-error>
                             </div>
                             <div class="form-group">
-                            <label>State of Origin</label>                
+                            <label>Edit State of Origin</label>                
                             <select v-model="form.state_of_origin" class="form-control" :class="{ 'is-invalid': form.errors.has('state_of_origin') }" name="state_of_origin">
                             <option value="nul" style="font-weight:700;">State of Origin</option>
                             <option value="Niger State">Niger State</option>
@@ -171,25 +176,30 @@
                             </select>  
                             <has-error :form="form" field="state_of_origin"></has-error>
                             </div>
-                            <div class="form-group"> 
+                            <div class="form-group">
+                                <label>Edit Home Adress</label>  
                             <textarea v-model="form.home_address"  placeholder="Enter Home Address" name="home_address" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('home_address') }"></textarea>                       
                             <has-error :form="form" field="home_address"></has-error>                       
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group">  
+                                <label>Edit Place of Birth</label>                        
                             <input v-model="form.place_of_birth" type="text" name="place_of_birth" placeholder="Enter Place of Birth"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('place_of_birth') }">
                             <has-error :form="form" field="place_of_birth"></has-error>
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group">  
+                                <label>Edit Marital Status</label>                        
                             <input v-model="form.marital_status" type="text" name="marital_status" placeholder="Enter Marital Status"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('marital_status') }">
                             <has-error :form="form" field="marital_status"></has-error>
                             </div>
                             <div class="form-group"> 
+                                <label>Edit Next of kin Home Address</label>  
                             <textarea v-model="form.home_next_of_kin"  placeholder="Enter Next of Kin Home Address" name="home_next_of_kin" id="" cols="10" rows="5"  class="form-control" :class="{ 'is-invalid': form.errors.has('home_next_of_kin') }"></textarea>                       
                             <has-error :form="form" field="home_next_of_kin"></has-error>                       
                             </div>
-                            <div class="form-group">                        
+                            <div class="form-group">
+                                <label>Edit Next of Kin Phone Number</label>                          
                             <input v-model="form.phone_next_of_kin" type="number" name="phone_next_of_kin" placeholder="Enter Next of Kin Phone Number"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('phone_next_of_kin') }">
                             <has-error :form="form" field="phone_next_of_kin"></has-error>
