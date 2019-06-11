@@ -58,11 +58,15 @@
                                 <div class="form-group">
                                 <label>Select Type of Test</label>                
                                 <select v-model="form.type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }" name="type">
-                                <option value="Type Test 1">Type Test 1</option>
-                                <option value="Type Test 2">Type Test 2</option>
-                                <option value="Type Test 3">Type Test 3</option>
-                                <option value="Type Test 4">Type Test 4</option>
-                                <option value="Type Test 5">Type Test 5</option>                               
+                                 <option value="Full blood Count">Full blood Count</option>                                
+                                 <option value="Urinalysis">Urinalysis</option> 
+                                 <option value="Malaria Parasite">Malaria Parasite</option> 
+                                 <option value="HIV I - II">HIV I - II</option> 
+                                 <option value="Blood Group">Blood Group</option> 
+                                 <option value="Genotype">Genotype</option> 
+                                 <option value="Blood Sugar">Blood Sugar</option> 
+                                 <option value="Pregnancy Test">Pregnancy Test</option> 
+                                 <option value="Mantoux Test">Mantoux Test</option>                              
                                 </select>  
                                 <has-error :form="form" field="type"></has-error>
                                 </div>                                
