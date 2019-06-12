@@ -77,4 +77,9 @@
         </main>
     </div>
 </body>
+<script>
+     setTimeout(function(){
+    NProgress.done()
+    }, 3000);
+</script>
 </html>

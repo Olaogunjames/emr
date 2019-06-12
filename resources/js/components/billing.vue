@@ -115,9 +115,16 @@
                 })              
             }
         },
-        methods:{                
+        methods:{                        
             loadPayment(){
-                 axios.get('api/payment').then(({data}) => (this.payments = data));
+                axios.get("api/payment")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.payments = response.data;
+                });   
+                //  axios.get('api/payment').then(({data}) => (this.payments = data));
                 axios.get('api/patient').then(({data}) => (this.patients = data));               
             },                             
              paymentSave(){

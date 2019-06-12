@@ -80,7 +80,7 @@
                           <label>Edit Role</label>                         
                       <select  v-model="form.role" class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" name="role">
                             <option value="nul" style="font-weight:700;">Edit Role</option>
-                            <option value="recept">Reception</option>
+                            <option value="recept">Medical Record Officer</option>
                             <option value="nurse">Nurse</option>
                             <option value="doc">Doctor</option>
                             <option value="lab">Laboratory</option>
@@ -137,10 +137,20 @@
                 })              
             }
         },
-        methods:{          
-            loadStaffs(){                            
-                 axios.get('api/staff').then(({data}) => (this.staffs = data));                 
-            },
+        methods:{
+          loadStaffs(){                                            
+                // this.loading = true;
+                axios.get("api/staff")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.staffs = response.data;
+                })              
+            },          
+            // loadStaffs(){                            
+            //      axios.get('api/staff').then(({data}) => (this.staffs = data));                 
+            // },
             editModal(staff){
               $('#editstaff').modal('show');
               this.form.fill(staff);              

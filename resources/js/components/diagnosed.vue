@@ -185,10 +185,20 @@
                 })              
             }
         },
-        methods:{          
-            LoadDiagnoses(){
-                 axios.get('api/diagnose').then(({data}) => (this.diagnoses = data));
-            },
+        methods:{
+           LoadDiagnoses(){                                            
+                // this.loading = true;
+                axios.get("api/diagnose")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.diagnoses = response.data;
+                })              
+            },           
+            // LoadDiagnoses(){
+            //      axios.get('api/diagnose').then(({data}) => (this.diagnoses = data));
+            // },
             editModal(diagnose){
               $('#editdiagnoses').modal('show');
               this.form.fill(diagnose);              

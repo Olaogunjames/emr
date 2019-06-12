@@ -11,7 +11,7 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <center>
-                <!-- <div class="test">
+                <!-- <div v-if="loading" class="test">
                     <img src="images/Interwind-1s-100px.svg" alt="">
                 </div> -->
                 </center>
@@ -245,6 +245,7 @@
       data(){
             return {
               patients: {},
+            //   loading: false,
               form: new Form({
                     id: '',
                     unique_id: 'EMR' + Math.floor((Math.random() * 10000000000) + 1),
@@ -268,9 +269,18 @@
             }
         },
         methods:{          
-            loadPatients(){                            
-                 axios.get('api/patient').then(({data}) => (this.patients = data));                 
+            loadPatients(){                                            
+                // this.loading = true;
+                axios.get("api/patient")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.patients = response.data;
+                })              
             },
+
+            
             editModal(patient){
               $('#editpatient').modal('show');
               this.form.fill(patient);              
@@ -335,7 +345,8 @@
             }
         },        
         mounted() {
-            console.log('Component mounted.')                        
+            console.log('Component mounted.') 
+            // this.loading = true;                       
             this.loadPatients(); 
             Fire.$on('afterAction', () => {this.loadPatients()})                                   
         }

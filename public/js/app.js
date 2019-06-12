@@ -1771,6 +1771,45 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/404.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    setTimeout(function () {
+      NProgress.done();
+    }, 3000);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -1969,6 +2008,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    setTimeout(function () {
+      NProgress.done();
+    }, 3000);
   }
 });
 
@@ -2099,15 +2141,17 @@ __webpack_require__.r(__webpack_exports__);
     loadPatients: function loadPatients() {
       var _this = this;
 
-      axios.get('api/patient').then(function (_ref) {
-        var data = _ref.data;
-        return _this.patients = data;
+      // this.loading = true;
+      axios.get("api/patient").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.patients = response.data;
       });
     }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.loadPatients();
   }
 });
 
@@ -2196,9 +2240,12 @@ __webpack_require__.r(__webpack_exports__);
     loadPatients: function loadPatients() {
       var _this = this;
 
-      axios.get('api/patient').then(function (_ref) {
-        var data = _ref.data;
-        return _this.patients = data;
+      // this.loading = true;
+      axios.get("api/patient").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.patients = response.data;
       });
     }
   },
@@ -2330,25 +2377,16 @@ __webpack_require__.r(__webpack_exports__);
     loadPatients: function loadPatients() {
       var _this = this;
 
-      axios.get('api/patient').then(function (_ref) {
-        var data = _ref.data;
-        return _this.patients = data;
+      // this.loading = true;
+      axios.get("api/patient").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.patients = response.data;
       });
     }
   },
   mounted: function mounted() {
-    // (function($) {
-    // $(function() {
-    //     $('.immunization').fSelect({
-    //     placeholder: 'Immunization Status',
-    //     numDisplayed: 3,
-    //     overflowText: '{n} selected',
-    //     noResultsText: 'No results found',
-    //     searchText: 'Search',
-    //     showSearch: true
-    //     });
-    // });
-    // })(jQuery);
     console.log('Component mounted.');
     this.loadPatients();
   }
@@ -2365,6 +2403,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2504,11 +2545,17 @@ __webpack_require__.r(__webpack_exports__);
     loadStaffs: function loadStaffs() {
       var _this = this;
 
-      axios.get('api/staff').then(function (_ref) {
-        var data = _ref.data;
-        return _this.staffs = data;
+      // this.loading = true;
+      axios.get("api/staff").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.staffs = response.data;
       });
     },
+    // loadStaffs(){                            
+    //      axios.get('api/staff').then(({data}) => (this.staffs = data));                 
+    // },
     editModal: function editModal(staff) {
       $('#editstaff').modal('show');
       this.form.fill(staff);
@@ -2694,12 +2741,15 @@ __webpack_require__.r(__webpack_exports__);
     loadAppointment: function loadAppointment() {
       var _this = this;
 
-      axios.get('api/appointment').then(function (_ref) {
+      axios.get("api/appointment").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.appointments = response.data;
+      }); //  axios.get('api/appointment').then(({data}) => (this.appointments = data));
+
+      axios.get('api/patient').then(function (_ref) {
         var data = _ref.data;
-        return _this.appointments = data;
-      });
-      axios.get('api/patient').then(function (_ref2) {
-        var data = _ref2.data;
         return _this.patients = data;
       });
     },
@@ -2865,12 +2915,15 @@ __webpack_require__.r(__webpack_exports__);
     loadPayment: function loadPayment() {
       var _this = this;
 
-      axios.get('api/payment').then(function (_ref) {
+      axios.get("api/payment").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.payments = response.data;
+      }); //  axios.get('api/payment').then(({data}) => (this.payments = data));
+
+      axios.get('api/patient').then(function (_ref) {
         var data = _ref.data;
-        return _this.payments = data;
-      });
-      axios.get('api/patient').then(function (_ref2) {
-        var data = _ref2.data;
         return _this.patients = data;
       });
     },
@@ -3057,11 +3110,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadHospitals: function LoadHospitals() {
       var _this = this;
 
-      axios.get('api/hospital').then(function (_ref) {
-        var data = _ref.data;
-        return _this.hospitals = data;
+      // this.loading = true;
+      axios.get("api/hospital").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.hospitals = response.data;
       });
     },
+    // LoadHospitals(){
+    //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
+    // },    
     addDiagnosis: function addDiagnosis() {
       $('.diagnose').html('<i class="fa fa-spin fa-spinner"></i>');
       this.form.post('api/diagnose').then(function () {
@@ -3273,6 +3332,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3290,11 +3351,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadDiagnoses: function LoadDiagnoses() {
       var _this = this;
 
-      axios.get('api/diagnose').then(function (_ref) {
-        var data = _ref.data;
-        return _this.diagnoses = data;
+      // this.loading = true;
+      axios.get("api/diagnose").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.diagnoses = response.data;
       });
     },
+    // LoadDiagnoses(){
+    //      axios.get('api/diagnose').then(({data}) => (this.diagnoses = data));
+    // },
     editModal: function editModal(diagnose) {
       $('#editdiagnoses').modal('show');
       this.form.fill(diagnose);
@@ -3570,6 +3637,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3593,10 +3662,13 @@ __webpack_require__.r(__webpack_exports__);
     LoadLabresult: function LoadLabresult() {
       var _this = this;
 
-      axios.get('api/give-injection').then(function (_ref) {
-        var data = _ref.data;
-        return _this.medications = data;
-      });
+      axios.get("api/give-injection").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.medications = response.data;
+      }); //  axios.get('api/give-injection').then(({data}) => (this.medications = data));
+
       axios.get('api/user').then(function (response) {
         console.log(response.data);
         _this.user = response.data;
@@ -3873,11 +3945,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadHospitals: function LoadHospitals() {
       var _this = this;
 
-      axios.get('api/hospital').then(function (_ref) {
-        var data = _ref.data;
-        return _this.hospitals = data;
+      // this.loading = true;
+      axios.get("api/hospital").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.hospitals = response.data;
       });
     },
+    // LoadHospitals(){
+    //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
+    // },
     editModal: function editModal(hospital) {
       $('#edithospital').modal('show');
       this.form.fill(hospital);
@@ -4066,6 +4144,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4082,11 +4165,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadDiagnoses: function LoadDiagnoses() {
       var _this = this;
 
-      axios.get('api/labtest').then(function (_ref) {
-        var data = _ref.data;
-        return _this.diagnoses = data;
+      // this.loading = true;
+      axios.get("api/labtest").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.diagnoses = response.data;
       });
     },
+    // LoadDiagnoses(){
+    //      axios.get('api/labtest').then(({data}) => (this.diagnoses = data));
+    // },  
     // imageFunction(e){
     //   let file = e.target.files[0];
     //   let reader = new FileReader();
@@ -4240,6 +4329,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4256,10 +4351,12 @@ __webpack_require__.r(__webpack_exports__);
     LoadLabresult: function LoadLabresult() {
       var _this = this;
 
-      axios.get('api/uploadtest').then(function (_ref) {
-        var data = _ref.data;
-        return _this.labresults = data;
-      }); //  axios.get('api/loguser').then(({data}) => (this.user = data));
+      axios.get("api/uploadtest").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.labresults = response.data;
+      }); //  axios.get('api/uploadtest').then(({data}) => (this.labresults = data));
 
       axios.get('api/user').then(function (response) {
         console.log(response.data);
@@ -4426,6 +4523,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4445,10 +4544,13 @@ __webpack_require__.r(__webpack_exports__);
     LoadLabresult: function LoadLabresult() {
       var _this = this;
 
-      axios.get('api/uploadpham').then(function (_ref) {
-        var data = _ref.data;
-        return _this.medications = data;
-      });
+      axios.get("api/uploadpham").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.medications = response.data;
+      }); //  axios.get('api/uploadpham').then(({data}) => (this.medications = data));
+
       axios.get('api/user').then(function (response) {
         console.log(response.data);
         _this.user = response.data;
@@ -4731,10 +4833,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
+      //   loading: false,
       form: new Form({
         id: '',
         unique_id: 'EMR' + Math.floor(Math.random() * 10000000000 + 1),
@@ -4760,9 +4873,12 @@ __webpack_require__.r(__webpack_exports__);
     loadPatients: function loadPatients() {
       var _this = this;
 
-      axios.get('api/patient').then(function (_ref) {
-        var data = _ref.data;
-        return _this.patients = data;
+      // this.loading = true;
+      axios.get("api/patient").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.patients = response.data;
       });
     },
     editModal: function editModal(patient) {
@@ -4826,7 +4942,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this3 = this;
 
-    console.log('Component mounted.');
+    console.log('Component mounted.'); // this.loading = true;                       
+
     this.loadPatients();
     Fire.$on('afterAction', function () {
       _this3.loadPatients();
@@ -4958,6 +5075,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4976,11 +5095,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadDiagnoses: function LoadDiagnoses() {
       var _this = this;
 
-      axios.get('api/phamtest').then(function (_ref) {
-        var data = _ref.data;
-        return _this.diagnoses = data;
+      // this.loading = true;
+      axios.get("api/phamtest").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.diagnoses = response.data;
       });
     },
+    // LoadDiagnoses(){
+    //      axios.get('api/phamtest').then(({data}) => (this.diagnoses = data));
+    // },            
     addDiagnosis: function addDiagnosis() {
       $('.labtestresult').html('<i class="fa fa-spin fa-spinner"></i>');
       this.form.post('api/uploadpham').then(function () {
@@ -5132,6 +5257,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5150,11 +5276,17 @@ __webpack_require__.r(__webpack_exports__);
     loadStaffs: function loadStaffs() {
       var _this = this;
 
-      axios.get('api/profile').then(function (_ref) {
-        var data = _ref.data;
-        return _this.staff = data;
+      // this.loading = true;
+      axios.get("api/profile").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.staff = response.data;
       });
     },
+    // loadStaffs(){                            
+    //      axios.get('api/profile').then(({data}) => (this.staff = data));                 
+    // },
     editModal: function editModal(staff) {
       $('#editstaff').modal('show');
       this.form.fill(staff);
@@ -5290,6 +5422,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    setTimeout(function () {
+      NProgress.done();
+    }, 3000);
   }
 });
 
@@ -5429,11 +5564,17 @@ __webpack_require__.r(__webpack_exports__);
     LoadSurgeries: function LoadSurgeries() {
       var _this = this;
 
-      axios.get('api/surgery').then(function (_ref) {
-        var data = _ref.data;
-        return _this.surgeries = data;
+      // this.loading = true;
+      axios.get("api/surgery").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.staff = response.data;
       });
     },
+    // LoadSurgeries(){
+    //      axios.get('api/surgery').then(({data}) => (this.surgeries = data));
+    // },
     editModal: function editModal(surgery) {
       $('#editsurgery').modal('show');
       this.form.fill(surgery);
@@ -5712,11 +5853,17 @@ __webpack_require__.r(__webpack_exports__);
     loadVitals: function loadVitals() {
       var _this = this;
 
-      axios.get('api/vital').then(function (_ref) {
-        var data = _ref.data;
-        return _this.vitals = data;
+      // this.loading = true;
+      axios.get("api/vital").then(function (response) {
+        setTimeout(function () {
+          NProgress.done();
+        }, 1000);
+        _this.vitals = response.data;
       });
     },
+    // loadVitals(){
+    //      axios.get('api/vital').then(({data}) => (this.vitals = data));
+    // },
     editModal: function editModal(vital) {
       $('#editvital').modal('show');
       this.form.fill(vital);
@@ -62956,6 +63103,51 @@ var AlertSuccess_Component = normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404.vue?vue&type=template&id=73992586&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/404.vue?vue&type=template&id=73992586& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Page Not Found")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("center", [
+                _vm._v("\n                    Error! "),
+                _c("br"),
+                _vm._v("\n                    PAGE NOT FOUND\n                ")
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -64717,7 +64909,7 @@ var render = function() {
                         "is-invalid": _vm.form.errors.has("temperature")
                       },
                       attrs: {
-                        type: "number",
+                        type: "text",
                         name: "temperature",
                         placeholder: "Enter Temperature"
                       },
@@ -64757,7 +64949,7 @@ var render = function() {
                         "is-invalid": _vm.form.errors.has("blood_pressure")
                       },
                       attrs: {
-                        type: "number",
+                        type: "text",
                         name: "blood_pressure",
                         placeholder: "Enter Blood Pressure"
                       },
@@ -64799,7 +64991,7 @@ var render = function() {
                       staticClass: "form-control",
                       class: { "is-invalid": _vm.form.errors.has("height") },
                       attrs: {
-                        type: "number",
+                        type: "text",
                         name: "height",
                         placeholder: "Enter Height"
                       },
@@ -64837,7 +65029,7 @@ var render = function() {
                       staticClass: "form-control",
                       class: { "is-invalid": _vm.form.errors.has("weight") },
                       attrs: {
-                        type: "number",
+                        type: "text",
                         name: "weight",
                         placeholder: "Enter Weight"
                       },
@@ -64875,7 +65067,7 @@ var render = function() {
                       staticClass: "form-control",
                       class: { "is-invalid": _vm.form.errors.has("pulse") },
                       attrs: {
-                        type: "number",
+                        type: "text",
                         name: "pulse",
                         placeholder: "Enter Pulse"
                       },
@@ -65322,6 +65514,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Full Name")]),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -65368,6 +65562,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Email")]),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -65417,6 +65613,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Role")]),
+                                      _vm._v(" "),
                                       _c(
                                         "select",
                                         {
@@ -65476,7 +65674,7 @@ var render = function() {
                                           _c(
                                             "option",
                                             { attrs: { value: "recept" } },
-                                            [_vm._v("Reception")]
+                                            [_vm._v("Medical Record Officer")]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -67205,6 +67403,12 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "Diadnoses" } },
+                                        [_vm._v(" Edit Diagnosis")]
+                                      ),
+                                      _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
                                           {
@@ -67256,6 +67460,12 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "comment" } },
+                                        [_vm._v("Edit Comment")]
+                                      ),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -67828,26 +68038,28 @@ var render = function() {
                                         [
                                           _c(
                                             "option",
-                                            { attrs: { value: "hfghg" } },
-                                            [_vm._v("Dr")]
+                                            { attrs: { value: "Tablet" } },
+                                            [_vm._v("Tablet")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "Miuyjyss" } },
-                                            [_vm._v("Miss")]
+                                            { attrs: { value: "Capsule" } },
+                                            [_vm._v("Capsule")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jhjhoijkjok" } },
-                                            [_vm._v("Mrs")]
+                                            {
+                                              attrs: { value: "Multivitamins" }
+                                            },
+                                            [_vm._v("Multivitamins")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jgjgujuj" } },
-                                            [_vm._v("Mr")]
+                                            { attrs: { value: "Syrup" } },
+                                            [_vm._v("Syrup")]
                                           )
                                         ]
                                       ),
@@ -67863,6 +68075,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Unit")]),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -67909,6 +68123,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Comment")]),
+                                      _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
                                           {
@@ -69384,34 +69600,86 @@ var render = function() {
                                             [
                                               _c(
                                                 "option",
-                                                { attrs: { value: "hfghg" } },
-                                                [_vm._v("Dr")]
+                                                {
+                                                  attrs: {
+                                                    value: "Full blood Count"
+                                                  }
+                                                },
+                                                [_vm._v("Full blood Count")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
                                                 {
-                                                  attrs: { value: "Miuyjyss" }
+                                                  attrs: { value: "Urinalysis" }
                                                 },
-                                                [_vm._v("Miss")]
+                                                [_vm._v("Urinalysis")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
                                                 {
                                                   attrs: {
-                                                    value: "jhjhoijkjok"
+                                                    value: "Malaria Parasite"
                                                   }
                                                 },
-                                                [_vm._v("Mrs")]
+                                                [_vm._v("Malaria Parasite")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
                                                 {
-                                                  attrs: { value: "jgjgujuj" }
+                                                  attrs: { value: "HIV I - II" }
                                                 },
-                                                [_vm._v("Mr")]
+                                                [_vm._v("HIV I - II")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Blood Group"
+                                                  }
+                                                },
+                                                [_vm._v("Blood Group")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: { value: "Genotype" }
+                                                },
+                                                [_vm._v("Genotype")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Blood Sugar"
+                                                  }
+                                                },
+                                                [_vm._v("Blood Sugar")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Pregnancy Test"
+                                                  }
+                                                },
+                                                [_vm._v("Pregnancy Test")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "option",
+                                                {
+                                                  attrs: {
+                                                    value: "Mantoux Test"
+                                                  }
+                                                },
+                                                [_vm._v("Mantoux Test")]
                                               )
                                             ]
                                           ),
@@ -69803,26 +70071,68 @@ var render = function() {
                                         [
                                           _c(
                                             "option",
-                                            { attrs: { value: "hfghg" } },
-                                            [_vm._v("Dr")]
+                                            {
+                                              attrs: {
+                                                value: "Full blood Count"
+                                              }
+                                            },
+                                            [_vm._v("Full blood Count")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "Miuyjyss" } },
-                                            [_vm._v("Miss")]
+                                            { attrs: { value: "Urinalysis" } },
+                                            [_vm._v("Urinalysis")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jhjhoijkjok" } },
-                                            [_vm._v("Mrs")]
+                                            {
+                                              attrs: {
+                                                value: "Malaria Parasite"
+                                              }
+                                            },
+                                            [_vm._v("Malaria Parasite")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jgjgujuj" } },
-                                            [_vm._v("Mr")]
+                                            { attrs: { value: "HIV I - II" } },
+                                            [_vm._v("HIV I - II")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Blood Group" } },
+                                            [_vm._v("Blood Group")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Genotype" } },
+                                            [_vm._v("Genotype")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "Blood Sugar" } },
+                                            [_vm._v("Blood Sugar")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            {
+                                              attrs: { value: "Pregnancy Test" }
+                                            },
+                                            [_vm._v("Pregnancy Test")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            {
+                                              attrs: { value: "Mantoux Test" }
+                                            },
+                                            [_vm._v("Mantoux Test")]
                                           )
                                         ]
                                       ),
@@ -69838,6 +70148,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Comment")]),
+                                      _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
                                           {
@@ -70195,26 +70507,28 @@ var render = function() {
                                         [
                                           _c(
                                             "option",
-                                            { attrs: { value: "hfghg" } },
-                                            [_vm._v("Dr")]
+                                            { attrs: { value: "Tablet" } },
+                                            [_vm._v("Tablet")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "Miuyjyss" } },
-                                            [_vm._v("Miss")]
+                                            { attrs: { value: "Capsule" } },
+                                            [_vm._v("Capsule")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jhjhoijkjok" } },
-                                            [_vm._v("Mrs")]
+                                            {
+                                              attrs: { value: "Multivitamins" }
+                                            },
+                                            [_vm._v("Multivitamins")]
                                           ),
                                           _vm._v(" "),
                                           _c(
                                             "option",
-                                            { attrs: { value: "jgjgujuj" } },
-                                            [_vm._v("Mr")]
+                                            { attrs: { value: "Syrup" } },
+                                            [_vm._v("Syrup")]
                                           )
                                         ]
                                       ),
@@ -70230,6 +70544,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Unit")]),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -70276,6 +70592,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
+                                      _c("label", [_vm._v("Edit Comment")]),
+                                      _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
                                           {
@@ -70371,7 +70689,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    " Refer Patient for injection\n                        "
+                                    " Edit Refer Patient for injection\n                        "
                                   ),
                                   _c("center", [
                                     _c(
@@ -70857,12 +71175,6 @@ var render = function() {
                                             _vm._v(" "),
                                             _c(
                                               "option",
-                                              { attrs: { value: "Dr" } },
-                                              [_vm._v("Dr")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
                                               { attrs: { value: "Miss" } },
                                               [_vm._v("Miss")]
                                             ),
@@ -70895,6 +71207,8 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [_vm._v("Edit Full Name")]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -70946,6 +71260,8 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [_vm._v("Edit Email")]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -70995,6 +71311,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Phone Number")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -71046,6 +71366,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Occupation")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -71097,7 +71421,7 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
-                                        _c("label", [_vm._v("Select Gender")]),
+                                        _c("label", [_vm._v("Edit Gender")]),
                                         _vm._v(" "),
                                         _c(
                                           "select",
@@ -71183,7 +71507,9 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
-                                        _c("label", [_vm._v("Date of Birth")]),
+                                        _c("label", [
+                                          _vm._v("Edit Date of Birth")
+                                        ]),
                                         _vm._v(" "),
                                         _c("input", {
                                           directives: [
@@ -71234,9 +71560,7 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
-                                        _c("label", [
-                                          _vm._v("Select Relegion")
-                                        ]),
+                                        _c("label", [_vm._v("Edit Relegion")]),
                                         _vm._v(" "),
                                         _c(
                                           "select",
@@ -71306,6 +71630,12 @@ var render = function() {
                                               "option",
                                               { attrs: { value: "Islam" } },
                                               [_vm._v("Islam")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "Others" } },
+                                              [_vm._v("Others")]
                                             )
                                           ]
                                         ),
@@ -71324,6 +71654,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Nationality")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -71376,7 +71710,7 @@ var render = function() {
                                       { staticClass: "form-group" },
                                       [
                                         _c("label", [
-                                          _vm._v("State of Origin")
+                                          _vm._v("Edit State of Origin")
                                         ]),
                                         _vm._v(" "),
                                         _c(
@@ -71478,6 +71812,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Home Adress")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("textarea", {
                                           directives: [
                                             {
@@ -71531,6 +71869,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Place of Birth")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -71582,6 +71924,10 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v("Edit Marital Status")
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -71633,6 +71979,12 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v(
+                                            "Edit Next of kin Home Address"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
                                         _c("textarea", {
                                           directives: [
                                             {
@@ -71688,6 +72040,12 @@ var render = function() {
                                       "div",
                                       { staticClass: "form-group" },
                                       [
+                                        _c("label", [
+                                          _vm._v(
+                                            "Edit Next of Kin Phone Number"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
@@ -72053,42 +72411,9 @@ var render = function() {
                                           }
                                         }
                                       }),
-                                      _vm._v(
-                                        " Confirm First\n\n                            "
-                                      ),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.form.diagnose_id,
-                                            expression: "form.diagnose_id"
-                                          }
-                                        ],
-                                        attrs: {
-                                          type: "radio",
-                                          name: "diagnose_id"
-                                        },
-                                        domProps: {
-                                          value: diagnose.id,
-                                          checked: _vm._q(
-                                            _vm.form.diagnose_id,
-                                            diagnose.id
-                                          )
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            return _vm.$set(
-                                              _vm.form,
-                                              "diagnose_id",
-                                              diagnose.id
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(
-                                        " Confirm First\n                                                         \n                             "
-                                      ),
+                                      _vm._v(" Confirm Action First\n      "),
+                                      _c("br"),
+                                      _vm._v(" "),
                                       _c(
                                         "div",
                                         { staticClass: "form-group" },
@@ -72144,34 +72469,30 @@ var render = function() {
                                             [
                                               _c(
                                                 "option",
-                                                { attrs: { value: "hfghg" } },
-                                                [_vm._v("Dr")]
+                                                { attrs: { value: "Tablet" } },
+                                                [_vm._v("Tablet")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
-                                                {
-                                                  attrs: { value: "Miuyjyss" }
-                                                },
-                                                [_vm._v("Miss")]
+                                                { attrs: { value: "Capsule" } },
+                                                [_vm._v("Capsule")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
                                                 {
                                                   attrs: {
-                                                    value: "jhjhoijkjok"
+                                                    value: "Multivitamins"
                                                   }
                                                 },
-                                                [_vm._v("Mrs")]
+                                                [_vm._v("Multivitamins")]
                                               ),
                                               _vm._v(" "),
                                               _c(
                                                 "option",
-                                                {
-                                                  attrs: { value: "jgjgujuj" }
-                                                },
-                                                [_vm._v("Mr")]
+                                                { attrs: { value: "Syrup" } },
+                                                [_vm._v("Syrup")]
                                               )
                                             ]
                                           ),
@@ -72341,7 +72662,40 @@ var render = function() {
                                         }
                                       }),
                                       _vm._v(
-                                        " Refer Patient for injection                                          \n                            "
+                                        " Refer Patient for injection\n                            \n                            "
+                                      ),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.diagnose_id,
+                                            expression: "form.diagnose_id"
+                                          }
+                                        ],
+                                        attrs: {
+                                          type: "radio",
+                                          name: "diagnose_id"
+                                        },
+                                        domProps: {
+                                          value: diagnose.id,
+                                          checked: _vm._q(
+                                            _vm.form.diagnose_id,
+                                            diagnose.id
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.form,
+                                              "diagnose_id",
+                                              diagnose.id
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        " Confirm Action Again\n\n                            "
                                       ),
                                       _c("center", [
                                         _c(
@@ -72769,6 +73123,8 @@ var render = function() {
                                   "div",
                                   { staticClass: "form-group" },
                                   [
+                                    _c("label", [_vm._v("Edit Role")]),
+                                    _vm._v(" "),
                                     _c(
                                       "select",
                                       {
@@ -74011,7 +74367,7 @@ var render = function() {
                                           )
                                         },
                                         attrs: {
-                                          type: "number",
+                                          type: "text",
                                           name: "temperature",
                                           placeholder: "Enter Temperature"
                                         },
@@ -74064,7 +74420,7 @@ var render = function() {
                                           )
                                         },
                                         attrs: {
-                                          type: "number",
+                                          type: "text",
                                           name: "blood_pressure",
                                           placeholder: "Enter Blood Pressure"
                                         },
@@ -74117,7 +74473,7 @@ var render = function() {
                                           )
                                         },
                                         attrs: {
-                                          type: "number",
+                                          type: "text",
                                           name: "height",
                                           placeholder: "Enter Height"
                                         },
@@ -74168,7 +74524,7 @@ var render = function() {
                                           )
                                         },
                                         attrs: {
-                                          type: "number",
+                                          type: "text",
                                           name: "weight",
                                           placeholder: "Enter Weight"
                                         },
@@ -74219,7 +74575,7 @@ var render = function() {
                                           )
                                         },
                                         attrs: {
-                                          type: "number",
+                                          type: "text",
                                           name: "pulse",
                                           placeholder: "Enter Pulse"
                                         },
@@ -89517,6 +89873,10 @@ Vue.filter('humanDate', function (created) {
 // })
 
 var routes = [{
+  name: '404',
+  path: '*',
+  component: __webpack_require__(/*! ./components/404.vue */ "./resources/js/components/404.vue")["default"]
+}, {
   name: 'all-patients',
   path: '/patients',
   component: __webpack_require__(/*! ./components/patients.vue */ "./resources/js/components/patients.vue")["default"]
@@ -89621,11 +89981,7 @@ router.beforeResolve(function (to, from, next) {
 
   next();
 });
-router.afterEach(function (to, from) {
-  setTimeout(function () {
-    nprogress__WEBPACK_IMPORTED_MODULE_1___default.a.done();
-  }, 3000);
-});
+router.afterEach(function (to, from) {});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -89708,6 +90064,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/404.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/404.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404.vue?vue&type=template&id=73992586& */ "./resources/js/components/404.vue?vue&type=template&id=73992586&");
+/* harmony import */ var _404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./404.vue?vue&type=script&lang=js& */ "./resources/js/components/404.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/404.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/404.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/404.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/404.vue?vue&type=template&id=73992586&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/404.vue?vue&type=template&id=73992586& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=template&id=73992586& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404.vue?vue&type=template&id=73992586&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_73992586___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

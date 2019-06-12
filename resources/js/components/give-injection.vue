@@ -171,13 +171,20 @@
              giveinjection(medication){
               $('#injectiongive').modal('show');
               this.form.fill(medication);              
-            },       
+            },                 
             LoadLabresult(){
-                 axios.get('api/give-injection').then(({data}) => (this.medications = data));
+              axios.get("api/give-injection")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.medications = response.data;
+                }); 
+                //  axios.get('api/give-injection').then(({data}) => (this.medications = data));
                  axios.get('api/user').then(response => {
                      console.log(response.data);
                      this.user = response.data
-                 })                 
+                 });                 
             },
              GiveInjectionNow(){
                 $('.injectiongive').html('<i class="fa fa-spin fa-spinner"></i>');

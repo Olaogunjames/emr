@@ -91,6 +91,9 @@
         },
         mounted() {
             console.log('Component mounted.')
+            setTimeout(function(){
+                    NProgress.done()
+                    }, 3000);
         }
     }
 </script>

@@ -193,10 +193,20 @@
                 })              
             }
         },
-        methods:{          
-            loadVitals(){
-                 axios.get('api/vital').then(({data}) => (this.vitals = data));
-            },
+        methods:{
+            loadVitals(){                                            
+                // this.loading = true;
+                axios.get("api/vital")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.vitals = response.data;
+                })              
+            },           
+            // loadVitals(){
+            //      axios.get('api/vital').then(({data}) => (this.vitals = data));
+            // },
             editModal(vital){
               $('#editvital').modal('show');
               this.form.fill(vital);              

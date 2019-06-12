@@ -109,23 +109,18 @@
                         $('.vital').html('Add Patient Vital');
                         });                                      
             },
-            loadPatients(){
-                 axios.get('api/patient').then(({data}) => (this.patients = data));
+            loadPatients(){                                            
+                // this.loading = true;
+                axios.get("api/patient")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.patients = response.data;
+                })              
             },
         },        
-        mounted() {
-            // (function($) {
-            // $(function() {
-            //     $('.immunization').fSelect({
-            //     placeholder: 'Immunization Status',
-            //     numDisplayed: 3,
-            //     overflowText: '{n} selected',
-            //     noResultsText: 'No results found',
-            //     searchText: 'Search',
-            //     showSearch: true
-            //     });
-            // });
-            // })(jQuery);
+        mounted() {           
             console.log('Component mounted.')
             this.loadPatients(); 
         }

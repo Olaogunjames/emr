@@ -128,10 +128,20 @@
                 })              
             }
         },
-        methods:{          
-            LoadDiagnoses(){
-                 axios.get('api/phamtest').then(({data}) => (this.diagnoses = data));
-            },            
+        methods:{
+           LoadDiagnoses(){                                            
+                // this.loading = true;
+                axios.get("api/phamtest")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.diagnoses = response.data;
+                })              
+            },          
+            // LoadDiagnoses(){
+            //      axios.get('api/phamtest').then(({data}) => (this.diagnoses = data));
+            // },            
             addDiagnosis(){
                 $('.labtestresult').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.post('api/uploadpham').then(

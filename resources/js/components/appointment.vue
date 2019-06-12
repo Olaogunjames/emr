@@ -100,9 +100,16 @@
                 })              
             }
         },
-        methods:{                
+        methods:{                         
             loadAppointment(){
-                 axios.get('api/appointment').then(({data}) => (this.appointments = data));
+              axios.get("api/appointment")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.appointments = response.data;
+                });   
+                //  axios.get('api/appointment').then(({data}) => (this.appointments = data));
                 axios.get('api/patient').then(({data}) => (this.patients = data));               
             },                             
              addAppointment(){

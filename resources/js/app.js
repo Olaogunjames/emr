@@ -43,7 +43,8 @@ Vue.filter('humanDate', function(created){
 
 
 const routes = [
-    { name: 'all-patients', path: '/patients', component: require('./components/patients.vue').default },
+    { name: '404', path: '*', component: require('./components/404.vue').default },
+    { name: 'all-patients', path: '/patients', component: require('./components/patients.vue').default },    
     { name: 'add-biodata', path: '/add-biodata', component: require('./components/add-biodata.vue').default },
     { name: 'add-vital', path: '/add-vital', component: require('./components/add-vitals.vue').default },
     { name: 'vitals', path: '/vitals', component: require('./components/vitals.vue').default },
@@ -84,9 +85,7 @@ const routes = [
   
   
   router.afterEach((to, from) => {
-    setTimeout(function(){
-      NProgress.done()
-     }, 3000);    
+       
   })
 
 

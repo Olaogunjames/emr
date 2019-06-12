@@ -120,10 +120,20 @@
                 })              
             }
         },
-        methods:{          
-            LoadSurgeries(){
-                 axios.get('api/surgery').then(({data}) => (this.surgeries = data));
-            },
+        methods:{
+          LoadSurgeries(){                                            
+                // this.loading = true;
+                axios.get("api/surgery")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.staff = response.data;
+                })              
+            },           
+            // LoadSurgeries(){
+            //      axios.get('api/surgery').then(({data}) => (this.surgeries = data));
+            // },
             editModal(surgery){
               $('#editsurgery').modal('show');
               this.form.fill(surgery);              

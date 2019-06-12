@@ -122,10 +122,16 @@
                 })              
             }
         },
-        methods:{          
+        methods:{                    
             LoadLabresult(){
-                 axios.get('api/uploadtest').then(({data}) => (this.labresults = data));
-                //  axios.get('api/loguser').then(({data}) => (this.user = data));
+              axios.get("api/uploadtest")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.labresults = response.data;
+                }); 
+                //  axios.get('api/uploadtest').then(({data}) => (this.labresults = data));
                  axios.get('api/user').then(response => {
                      console.log(response.data);
                      this.user = response.data

@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                             <select id="role" class="form-control  @error('role') is-invalid @enderror" name="role" required >
                             <option value="nul" style="font-weight:700;">Select Role</option>
-                            <option value="recept">Reception</option>
+                            <option value="recept">Medical Record Officer</option>
                             <option value="nurse">Nurse</option>
                             <option value="doc">Doctor</option>
                             <option value="lab">Laboratory</option>

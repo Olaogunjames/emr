@@ -72,12 +72,19 @@
                         $('.surgery').html('Add Patient surgery History ');
                         });                                      
             },
-            loadPatients(){
-                 axios.get('api/patient').then(({data}) => (this.patients = data));
+            loadPatients(){                                            
+                // this.loading = true;
+                axios.get("api/patient")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.patients = response.data;
+                })              
             },
         },        
         mounted() {           
-            console.log('Component mounted.')
+            console.log('Component mounted.')            
             this.loadPatients(); 
         }
     }

@@ -104,10 +104,20 @@
                 })              
             }
         },
-        methods:{          
-            LoadHospitals(){
-                 axios.get('api/hospital').then(({data}) => (this.hospitals = data));
-            },    
+        methods:{
+          LoadHospitals(){                                            
+                // this.loading = true;
+                axios.get("api/hospital")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.hospitals = response.data;
+                })              
+            },           
+            // LoadHospitals(){
+            //      axios.get('api/hospital').then(({data}) => (this.hospitals = data));
+            // },    
              addDiagnosis(){
                 $('.diagnose').html('<i class="fa fa-spin fa-spinner"></i>');
                 this.form.post('api/diagnose').then(

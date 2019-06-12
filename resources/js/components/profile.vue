@@ -125,10 +125,20 @@
                 })              
             }
         },
-        methods:{          
-            loadStaffs(){                            
-                 axios.get('api/profile').then(({data}) => (this.staff = data));                 
-            },
+        methods:{
+          loadStaffs(){                                            
+                // this.loading = true;
+                axios.get("api/profile")
+                .then((response)  =>  {
+                    setTimeout(function(){
+                    NProgress.done()
+                    }, 1000);
+                    this.staff = response.data;
+                })              
+            },           
+            // loadStaffs(){                            
+            //      axios.get('api/profile').then(({data}) => (this.staff = data));                 
+            // },
             editModal(staff){
               $('#editstaff').modal('show');
               this.form.fill(staff);              
