@@ -64099,7 +64099,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Enter Date Attented")]),
+                    _c("label", [_vm._v("Enter Date Attended")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [

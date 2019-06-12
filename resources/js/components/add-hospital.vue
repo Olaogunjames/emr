@@ -14,7 +14,7 @@
                         <has-error :form="form" field="patient_id"></has-error>
                         </div>                       
                         <div class="form-group"> 
-                        <label>Enter Date Attented</label>                        
+                        <label>Enter Date Attended</label>                        
                         <input v-model="form.date_attented" type="date" name="date_attented" placeholder="Enter Date Attented"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('date_attented') }">
                         <has-error :form="form" field="date_attented"></has-error>

@@ -326,6 +326,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
+              <router-link to="/labresult" class="nav-link">
+                <i class="nav-icon fas fa-vial"></i>
+                <p>
+                 Lab Result
+                </p>
+              </router-link>
+            </li>
+          <li class="nav-item">
             <router-link to="/billing" class="nav-link">
               <i class="nav-icon fas fa-money-bill-wave"></i>
               <p>
