@@ -66972,7 +66972,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [
-        _vm._v("Patients Symptoms and Complain")
+        _vm._v("Diagnose: Patients Symptoms and Complaints")
       ])
     ])
   },

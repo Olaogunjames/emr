@@ -3,7 +3,7 @@
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
             <div class="card-header">
-              <h3 class="card-title">Patients Symptoms and Complain</h3>
+              <h3 class="card-title">Diagnose: Patients Symptoms and Complaints</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
