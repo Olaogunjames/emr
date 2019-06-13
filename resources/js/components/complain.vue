@@ -40,13 +40,13 @@
                                 <input  :value = hospital.patient.unique_id type="hidden" name="hospital_id">                                -->
                                             <input v-model="form.patient_id" 
                                             :value="hospital.patient.id" 
-                                            type="radio" 
-                                            name="patient_id" /> Confirm First
+                                            type="radio"
+                                            name="patient_id" /> Confirm Action First <br>
 
                                          <input v-model="form.hospital_id" 
                                         :value="hospital.id" 
                                         type="radio" 
-                                        name="hospital_id" /> Confirm First
+                                        name="hospital_id" /> Confirm Hospital Details
                                 <!-- <input v-model="hospital.patient.id" type="hidden" name="patient_id">                                            
                                 <input v-model="hospital.id" type="hidden" name="hospital_id" > -->
                                 <div class="form-group"> 
@@ -96,6 +96,7 @@
       data(){
             return {
               hospitals: {},
+              // checked: true,
               form: new Form({  
                 patient_id: '', 
                 hospital_id: '',              

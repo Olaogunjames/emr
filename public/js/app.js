@@ -3098,6 +3098,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       hospitals: {},
+      // checked: true,
       form: new Form({
         patient_id: '',
         hospital_id: '',
@@ -66787,9 +66788,9 @@ var render = function() {
                                           }
                                         }
                                       }),
-                                      _vm._v(
-                                        " Confirm First\n\n                                     "
-                                      ),
+                                      _vm._v(" Confirm Action First "),
+                                      _c("br"),
+                                      _vm._v(" "),
                                       _c("input", {
                                         directives: [
                                           {
@@ -66821,7 +66822,7 @@ var render = function() {
                                         }
                                       }),
                                       _vm._v(
-                                        " Confirm First\n                            "
+                                        " Confirm Hospital Details\n                            "
                                       ),
                                       _vm._v(" "),
                                       _c(
