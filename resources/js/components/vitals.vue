@@ -48,7 +48,11 @@
                              <p><b>Blood Group: </b>{{vital.blood_group}}</p>
                              <p><b>Blood Type(Rhesus Type): </b> {{vital.blood_type}}</p>
                              <h4>Immunization Status</h4>
-                             <p v-for="vite in vital.immunization" :key="vite">{{vite}}</p>                             
+                             <i>Immunization status consist of Small Pox, Yellow Fever, TAB, Tetanus, Poliomyelitis, Dysthera <br> The ones listed are positive</i>                                                  
+                             <p v-for="vite in vital.immunization" :key="vite"> <b>{{vite}}</b> </p>
+                             <!-- <div v-for="vite in vital.immunization" :key="vite">
+                                 <p v-if = vite[0] == ""> Positive </p>
+                             </div> -->
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -206,7 +210,7 @@
             },           
             // loadVitals(){
             //      axios.get('api/vital').then(({data}) => (this.vitals = data));
-            // },
+            // },           
             editModal(vital){
               $('#editvital').modal('show');
               this.form.fill(vital);              

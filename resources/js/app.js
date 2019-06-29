@@ -27,6 +27,7 @@ const toast = swal.mixin({
 });
 window.toast = toast;
 
+
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
@@ -111,5 +112,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({    
     el: '#app',
-    router
+    router,
+    // data: {
+    //   search: ''
+    // },
+    // methods: {
+    //   searchit(){
+    //     Fire.$emit('searching')
+    //   }
+    // }
 });

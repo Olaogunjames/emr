@@ -30,7 +30,7 @@
                         <div class="form-group">                        
                       <select  v-model="form.role" class="form-control" :class="{ 'is-invalid': form.errors.has('role') }" name="role">
                             <option value="nul" style="font-weight:700;">Select Role</option>
-                            <option value="recept">Reception</option>
+                            <option value="recept">Medical Record Officer</option>
                             <option value="nurse">Nurse</option>
                             <option value="doc">Doctor</option>
                             <option value="lab">Laboratory</option>

@@ -2527,6 +2527,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4844,10 +4845,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       patients: {},
+      search: '',
       //   loading: false,
       form: new Form({
         id: '',
@@ -4882,12 +4894,21 @@ __webpack_require__.r(__webpack_exports__);
         _this.patients = response.data;
       });
     },
+    searchit: function searchit() {
+      var _this2 = this;
+
+      var query = this.search;
+      axios.get('api/findPatient?q=' + query).then(function (data) {
+        console.log(data.data.data);
+        _this2.patients = data.data.data;
+      })["catch"](function () {});
+    },
     editModal: function editModal(patient) {
       $('#editpatient').modal('show');
       this.form.fill(patient);
     },
     deletePatient: function deletePatient(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       swal.fire({
         title: 'Are you sure?',
@@ -4908,7 +4929,7 @@ __webpack_require__.r(__webpack_exports__);
             timer: 1000
           });
 
-          _this2.form["delete"]('api/patient/' + id).then(function () {
+          _this3.form["delete"]('api/patient/' + id).then(function () {
             swal.fire('Deleted!', 'Deleted Successfully.', 'success');
             Fire.$emit('afterAction');
           })["catch"](function () {
@@ -4941,13 +4962,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     console.log('Component mounted.'); // this.loading = true;                       
 
     this.loadPatients();
     Fire.$on('afterAction', function () {
-      _this3.loadPatients();
+      _this4.loadPatients();
     });
   }
 });
@@ -5832,6 +5853,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5864,7 +5889,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // loadVitals(){
     //      axios.get('api/vital').then(({data}) => (this.vitals = data));
-    // },
+    // },           
     editModal: function editModal(vital) {
       $('#editvital').modal('show');
       this.form.fill(vital);
@@ -65335,7 +65360,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(staff.email))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(staff.role))]),
+                      staff.role == "recept"
+                        ? _c("td", [_vm._v("Medical Record Officer")])
+                        : _c("td", [_vm._v(_vm._s(staff.role))]),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(_vm._s(_vm._f("humanDate")(staff.created_at)))
@@ -70846,7 +70873,55 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
-        _vm._m(0),
+        _c("div", { staticClass: "row card-header" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("div", { staticClass: "input-group input-group-sm" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search,
+                    expression: "search"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "search" },
+                domProps: { value: _vm.search },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.searchit($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "input-group-append" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info btn-flat",
+                    on: { click: _vm.searchit }
+                  },
+                  [_vm._v("Search")]
+                )
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -72138,7 +72213,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "col-sm-6" }, [
       _c("h3", { staticClass: "card-title" }, [_vm._v("All Patients")])
     ])
   },
@@ -73584,7 +73659,7 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "recept" } }, [
-                          _vm._v("Reception")
+                          _vm._v("Medical Record Officer")
                         ]),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "nurse" } }, [
@@ -74255,18 +74330,20 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("h4", [_vm._v("Immunization Status")]),
                                       _vm._v(" "),
+                                      _vm._m(3, true),
+                                      _vm._v(" "),
                                       _vm._l(vital.immunization, function(
                                         vite
                                       ) {
                                         return _c("p", { key: vite }, [
-                                          _vm._v(_vm._s(vite))
+                                          _c("b", [_vm._v(_vm._s(vite))])
                                         ])
                                       })
                                     ],
                                     2
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(3, true)
+                                  _vm._m(4, true)
                                 ])
                               ]
                             )
@@ -74331,7 +74408,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(4),
+                            _vm._m(5),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c(
@@ -74839,7 +74916,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _vm._m(5)
+                            _vm._m(6)
                           ])
                         ]
                       )
@@ -74849,7 +74926,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(6)
+              _vm._m(7)
             ]
           )
         ])
@@ -74913,6 +74990,18 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [
+      _vm._v(
+        "Immunization status consist of Small Pox, Yellow Fever, TAB, Tetanus, Poliomyelitis, Dysthera "
+      ),
+      _c("br"),
+      _vm._v(" The ones listed are positive")
     ])
   },
   function() {
@@ -90002,7 +90091,15 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app',
-  router: router
+  router: router // data: {
+  //   search: ''
+  // },
+  // methods: {
+  //   searchit(){
+  //     Fire.$emit('searching')
+  //   }
+  // }
+
 });
 
 /***/ }),

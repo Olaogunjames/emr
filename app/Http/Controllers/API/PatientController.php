@@ -136,4 +136,16 @@ class PatientController extends Controller
             
                
     }
+
+    public function search()
+    {
+        //
+        if($search = \Request::get('q')){
+            return addPatient::where(function($query) use ($search){
+                $query->where('full_name', 'LIKE', "%$search%" )->orWhere('title', 'LIKE', "%$search%" );
+            })->paginate(30);
+        }
+
+        // echo $patients;
+    }
 }

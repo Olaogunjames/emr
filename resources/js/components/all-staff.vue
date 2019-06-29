@@ -24,7 +24,8 @@
                 <tr v-for="staff in staffs" :key="staff.id">
                   <td>{{staff.title}}  {{staff.name}}</td>
                   <td>{{staff.email}}</td>
-                  <td>{{staff.role}}</td>
+                  <td v-if = "staff.role == 'recept'">Medical Record Officer</td>
+                  <td v-else>{{staff.role}}</td>                  
                   <td>{{staff.created_at | humanDate}}</td>                                    
                   <td>
                   <div class="row">

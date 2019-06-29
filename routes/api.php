@@ -36,6 +36,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('give-injection', 'API\phamController@giveInjection');
     Route::post('paymentsave', 'API\PaymentController@paymentsave');
     Route::get('profile', 'API\StaffController@profile');
+    Route::get('findPatient', 'API\PatientController@search');
 
 
 

@@ -5,8 +5,18 @@
         </div> <br><br>
         <div class="row justify-content-center">            
             <div class="card" style="width:100%;">
-            <div class="card-header">
+            <div class="row card-header">
+                <div class="col-sm-6">
               <h3 class="card-title">All Patients</h3>
+              </div>
+              <div class="col-sm-6">  
+                   <div class="input-group input-group-sm">
+                    <input type="search" v-model="search" @keyup.enter="searchit" class="form-control">
+                    <span class="input-group-append">
+                    <button @click="searchit" class="btn btn-info btn-flat">Search</button>
+                    </span>
+                    </div>            
+              </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -245,6 +255,7 @@
       data(){
             return {
               patients: {},
+              search: '',
             //   loading: false,
               form: new Form({
                     id: '',
@@ -279,8 +290,17 @@
                     this.patients = response.data;
                 })              
             },
-
-            
+            searchit(){
+                 let query = this.search;
+                axios.get('api/findPatient?q=' + query).then(
+                    (data)=>{
+                        console.log(data.data.data);
+                       this.patients = data.data.data
+                    }).catch(
+                    ()=>{
+                    
+                    });
+            },            
             editModal(patient){
               $('#editpatient').modal('show');
               this.form.fill(patient);              
@@ -344,7 +364,7 @@
                         });                                      
             }
         },        
-        mounted() {
+        mounted() {           
             console.log('Component mounted.') 
             // this.loading = true;                       
             this.loadPatients(); 
