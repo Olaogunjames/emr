@@ -37,7 +37,7 @@ class SurgeryController extends Controller
         //
         $this->validate($request, [
             'patient_id' => 'required',
-            'hospital_id' => 'required | unique:diagnoses',
+            'operations' => 'required',
             'date_of_operation' => 'required',
             'surgeon' => 'required',           
         ]);        
