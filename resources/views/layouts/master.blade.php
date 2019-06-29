@@ -303,15 +303,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- End Condition to show for nurse --}}
 
           {{-- Condition to show for doctor --}}
-          @if (Auth::user()->role == "doc"  )          
+          @if (Auth::user()->role == "doc"  )                    
           <li class="nav-item">
-            <router-link to="/complain" class="nav-link">
-              <i class="nav-icon fas fa-diagnoses"></i>
-              <p>
-                Fill Patient Diagnosis             
-              </p>
-            </router-link>
-          </li>        
+              <router-link to="/vitals" class="nav-link">
+                <i class="nav-icon fas fa-heartbeat"></i>
+                <p>
+                  Patient Vitals             
+                </p>
+              </router-link>
+            </li>        
+            <li class="nav-item">
+              <router-link to="/hospital" class="nav-link">
+                <i class="nav-icon fas fa-hospital-symbol"></i>
+                <p>
+                  Hospital History            
+                </p>
+              </router-link>
+            </li>            
+            <li class="nav-item">
+              <router-link to="/surgery" class="nav-link">
+                <i class="nav-icon fas fa-user-md"></i>
+                <p>
+                  Surgery History            
+                </p>
+              </router-link>
+            </li>   
+            <li class="nav-item">
+                <router-link to="/complain" class="nav-link">
+                  <i class="nav-icon fas fa-diagnoses"></i>
+                  <p>
+                    Fill Patient Diagnosis             
+                  </p>
+                </router-link>
+              </li>     
           <li class="nav-item">
             <router-link to="/diagnosed" class="nav-link">
               <i class="nav-icon fas fa-vials"></i>

@@ -5280,6 +5280,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -72946,7 +72947,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(_vm.staff.email))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.staff.role))]),
+                  _vm.staff.role == "recept"
+                    ? _c("td", [_vm._v("Medical Record Officer")])
+                    : _c("td", [_vm._v(_vm._s(_vm.staff.role))]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(_vm._s(_vm._f("humanDate")(_vm.staff.created_at)))
