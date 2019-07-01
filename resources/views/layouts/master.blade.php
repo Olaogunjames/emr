@@ -191,15 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Patients on medication
               </p>
             </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/billing" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Billing
-              </p>
-            </router-link>
-          </li>
+          </li>         
           <li class="nav-item">
             <router-link to="/staff" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -290,15 +282,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Give Injection
               </p>
             </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/billing" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Billing
-              </p>
-            </router-link>
-          </li>
+          </li>         
           @endif
           {{-- End Condition to show for nurse --}}
 
@@ -359,15 +343,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  Lab Result
                 </p>
               </router-link>
-            </li>
-          <li class="nav-item">
-            <router-link to="/billing" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Billing
-              </p>
-            </router-link>
-          </li>
+            </li>          
           @endif
           {{-- End Condition to show for doctor --}}
 
@@ -388,15 +364,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                Lab Result
               </p>
             </router-link>
-          </li>         
-          <li class="nav-item">
-            <router-link to="/billing" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Billing
-              </p>
-            </router-link>
-          </li>
+          </li>                   
           @endif
           {{-- End Condition to show for lab --}}
 
@@ -417,15 +385,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Patients on medication
               </p>
             </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/billing" class="nav-link">
-              <i class="nav-icon fas fa-money-bill-wave"></i>
-              <p>
-                Billing
-              </p>
-            </router-link>
-          </li>
+          </li>         
           @endif
           {{-- End Condition to show for pharmacy --}}
 
